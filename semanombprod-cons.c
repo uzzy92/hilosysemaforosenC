@@ -58,8 +58,11 @@ void* produce(){
   {
     //4.-Administrar el semáforo
     sem_wait(sem_cons);
-    varCrit=i;
-    printf("produciendo: %d\n",varCrit);
+    if(varCrit<21)
+    {
+    	varCrit=i;
+    	printf("produciendo: %d\n",varCrit);
+    }
     sem_post(sem_prod);
   }
   
