@@ -54,7 +54,7 @@ int main()
 
 //3.- Crear las funciones / Productor: genera valores enteros del 1 al 20
 void* produce(){
-  for (int i = 1; i < 21; i++)
+  while(varCrit<21)
   {
     //4.-Administrar el semáforo
     sem_wait(sem_cons);
@@ -69,11 +69,12 @@ void* produce(){
 }
 
 void * consume(){
-  for (int i = 1; i < 21; i++)
+  while(varCrit<21)
   {
     //4.-Administrar el semáforo
     sem_wait(sem_prod);
-    printf("consumiendo: %d\n",varCrit);
+    if(varCrit<21)
+       printf("consumiendo: %d\n",varCrit);
     sem_post(sem_cons);
   }
   
